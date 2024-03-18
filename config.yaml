@@ -1,0 +1,36 @@
+name: "DVR alarm server"
+description: "DVR alarm server for some cam"
+version: "1.2.0"
+slug: "dvr_alarm_server"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: services
+ports:
+  15002/tcp: 15002
+options:
+  server:
+    host: '0.0.0.0'
+    port: 15002
+  mqtt:
+    host: 'homeassistant.local'
+    port: 1883
+    username: 'mqtt'
+    password: 'mqtt'
+    topic: home/camalarm
+    debug: false
+schema:
+  server:
+    host: str
+    port: int(0,65535)
+  mqtt:
+    host: str
+    port: int(0,65535)
+    username: str
+    password: password
+    topic: str
+    debug: bool
